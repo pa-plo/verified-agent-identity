@@ -30,8 +30,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd scripts
-          npm install
+          if [ -d "scripts" ]; then
+            cd scripts
+            npm install
+          else
+            echo "Error: Directory 'scripts' not found!"
+            exit 1
+          fi
 
       - name: Step 2 - Create new Ethereum Identity
         run: node scripts/createNewEthereumIdentity.js
