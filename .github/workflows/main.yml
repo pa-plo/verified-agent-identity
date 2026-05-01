@@ -8,7 +8,7 @@ on:
         required: true
         default: 'paplo'
       agent_description:
-        description: 'paplo'
+        description: 'Agent description'
         required: true
         default: 'finder AI Agent'
 
