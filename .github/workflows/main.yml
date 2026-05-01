@@ -17,25 +17,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Cài đặt Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Bước 1 - Cài đặt ClawHub
+      - name: Step 1 - Install ClawHub
         run: npx clawhub@latest install verified-agent-identity
 
-      - name: Cài đặt các thư viện cần thiết
+      - name: Install dependencies
         run: |
           cd scripts
           npm install
 
-      - name: Bước 2 - Tạo Ethereum Identity mới
+      - name: Step 2 - Create new Ethereum Identity
         run: node scripts/createNewEthereumIdentity.js
 
-      - name: Bước 3 - Xem link xác minh Agent
+      - name: Step 3 - View Agent verification link
         run: |
           node scripts/manualLinkHumanToAgent.js --challenge '{"name": "paplo", "description": "paplo AI Agent"}'
